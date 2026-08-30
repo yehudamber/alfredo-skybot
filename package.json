@@ -10,7 +10,7 @@
     "build": "tsc",
     "watch": "tsc --watch",
     "start": "node .",
-    "dev": "nodenv ."
+    "dev": "node --env-file=.env ."
   },
   "keywords": [
     "bsky",
@@ -28,7 +28,6 @@
     "@eslint/js": "^9.15.0",
     "@types/node": "^22.9.3",
     "eslint": "^9.15.0",
-    "node-env-run": "^4.0.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.15.0"
   },
