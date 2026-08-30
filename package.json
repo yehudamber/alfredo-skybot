@@ -1,7 +1,7 @@
 {
-  "name": "bsky-bot",
-  "version": "1.0.0",
-  "description": "A template repo for building Bluesky bots",
+  "name": "alfredo-bot",
+  "version": "0.1.0",
+  "description": "A Hebrew language 'alfredo bot' for Bluesky",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
@@ -16,12 +16,12 @@
     "bsky",
     "bluesky",
     "atproto",
-    "bot"
+    "bot",
+    "alfredo"
   ],
   "author": {
-    "name": "Phil Nash",
-    "email": "philnash@gmail.com",
-    "url": "https://philna.sh/"
+    "name": "Yehuda Bernáth",
+    "email": "yehudamber@gmail.com"
   },
   "license": "MIT",
   "devDependencies": {
