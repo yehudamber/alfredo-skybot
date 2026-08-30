@@ -17,4 +17,4 @@ The project was created using Phil Nash's excellent template repository [bsky-bo
 
 ## License
 
-This project is licensed under the GNU Affero General Public License version 3; see <LICENSE> and <NOTICE>.
+This project is licensed under the GNU Affero General Public License version 3; see [LICENSE](LICENSE) and [NOTICE](NOTICE).
