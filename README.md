@@ -14,3 +14,7 @@ This project is inspired by [Alfredo Bot](https://x.com/NDKELNER); all credit fo
 > This is an independent, unofficial fan project and is not affiliated with, endorsed by, or supported by the original creator of Alfredo Bot.
 
 The project was created using Phil Nash's excellent template repository [bsky-bot](https://github.com/philnash/bsky-bot).
+
+## License
+
+This project is licensed under the GNU Affero General Public License version 3; see <LICENSE> and <NOTICE>.
