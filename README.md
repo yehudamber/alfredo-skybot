@@ -1,6 +1,6 @@
 # Alfredo Skybot - Alfredo Bot for Bluesky
 
-[Alfredo Bot](https://x.com/NDKELNER) has long been a respected and contributing member of X (formerly Twitter)'s Hebrew-speaking user community, providing users with fresh cream-filled subjects for discussion on an hourly basis.
+[Alfredo Bot](https://x.com/NDKELNER) has long been a respected and contributing member of X (formerly Twitter)'s Hebrew-speaking user community, providing users with fresh, creamy subjects for discussion on an hourly basis.
 
 However, despite Bluesky's excellent efforts to create a real alternative, no such bot has been created for the platform, limiting Hebrew-speaking users' ability to fully enjoy it.
 
