@@ -16,7 +16,7 @@
 
 import { userAgent } from "./config.js";
 
-type WikiPage = {
+interface WikiPage {
   title?: string;
   pageprops?: {
     disambiguation?: string;
@@ -62,5 +62,5 @@ export default async function getTerm(): Promise<string> {
     throw new Error("No non-disambiguation page titles were returned by Wikipedia");
   }
 
-  return eligible[Math.floor(Math.random() * eligible.length)].title!;
+  return eligible[Math.floor(Math.random() * eligible.length)].title as string;
 }
