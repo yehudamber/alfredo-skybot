@@ -21,7 +21,11 @@ interface WikiPage {
   pageprops?: {
     disambiguation?: string;
   };
-};
+}
+
+function normalizeWikiTitle(title: string): string {
+  return title.replace(/\s*\([^)]*\)\s*$/, "").trim();
+}
 
 export default async function getTerm(): Promise<string> {
   const url = new URL("https://he.wikipedia.org/w/api.php");
@@ -39,7 +43,7 @@ export default async function getTerm(): Promise<string> {
 
   const response = await fetch(url, {
     headers: {
-      "User-Agent": userAgent
+      "User-Agent": userAgent,
     },
   });
   if (!response.ok) {
@@ -62,5 +66,9 @@ export default async function getTerm(): Promise<string> {
     throw new Error("No non-disambiguation page titles were returned by Wikipedia");
   }
 
-  return eligible[Math.floor(Math.random() * eligible.length)].title as string;
+  const selectedTitle = eligible[Math.floor(Math.random() * eligible.length)].title as string;
+
+  console.log(`Selected: "${selectedTitle}"`);
+
+  return normalizeWikiTitle(selectedTitle);
 }
