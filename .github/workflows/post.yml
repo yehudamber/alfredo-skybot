@@ -6,19 +6,27 @@ on: workflow_dispatch
 #     - cron: "30 5,17 * * *"
 
 jobs:
-  build:
+  post:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout deployment branch
+        uses: actions/checkout@v4
+        with:
+          ref: deploy
+          fetch-depth: 0
+
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
+          cache: npm
+
       - name: Install dependencies
         run: npm ci
+
       - name: Build
         run: npm run build
+
       - name: Send post
         run: npm start
         env:
