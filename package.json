@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test dist/test/*",
     "lint": "eslint src/",
     "build": "tsc",
     "watch": "tsc --watch",
