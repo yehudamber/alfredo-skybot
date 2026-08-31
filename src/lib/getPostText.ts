@@ -1,5 +1,5 @@
 import getTerm from "./getTerm.js";
 
 export default async function getPostText() {
-  return `${await getTerm()} ברוטב אלפרדו`;
+  return {text: `${await getTerm()} ברוטב אלפרדו`, langs: ["he"]};
 }
