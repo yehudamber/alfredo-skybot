@@ -31,4 +31,4 @@ jobs:
         env:
           BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
           BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
-          USER_AGENT_URL: ${{ github.repositoryUrl }}
+          USER_AGENT_URL: ${{ github.server_url }}/${{ github.repository }}
