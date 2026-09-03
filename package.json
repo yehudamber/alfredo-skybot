@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@atproto/api": "^0.13.18",
-    "zod": "^3.23.8"
+    "zod": "^4.5.4"
   },
   "allowScripts": {
     "esbuild@0.28.1": true,

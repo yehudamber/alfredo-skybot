@@ -4,7 +4,7 @@ import { z } from "zod";
 import type { AtpAgentLoginOpts } from "@atproto/api";
 
 const envSchema = z.object({
-  DRY_RUN: z.boolean().default(true),
+  DRY_RUN: z.stringbool().default(true),
 
   BSKY_HANDLE: z.string().min(1),
   BSKY_PASSWORD: z.string().min(1),
