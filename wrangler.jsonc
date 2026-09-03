@@ -22,4 +22,7 @@
     "triggers": {
         "crons": ["0 * * * *"],
     },
+    "vars": {
+        "DRY_RUN": false,
+    },
 }
