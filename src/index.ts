@@ -1,8 +1,19 @@
 import Bot from "./lib/bot.js";
+import { getConfig } from "./lib/config.js";
 import getPostText from "./lib/getPostText.js";
 
-const post = await Bot.run(getPostText, { dryRun: true });
+export default async function main(env: Record<string, unknown>) {
+  const config = getConfig(env);
 
-console.log(
-  `[${new Date().toISOString()}] Posted: ${JSON.stringify(post, null, 2)}`
-);
+  const post = await Bot.run(
+    () => getPostText(config),
+    {
+      service: config.bskyService,
+      account: config.bskyAccount,
+      dryRun: config.dryRun,
+    });
+
+  console.log(
+    `[${new Date().toISOString()}] Posted: ${JSON.stringify(post, null, 2)}`
+  );
+}
