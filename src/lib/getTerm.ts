@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import { userAgent } from "./config.js";
+import { Config } from "./config.js";
 
 interface WikiPage {
   title?: string;
@@ -27,7 +27,7 @@ function normalizeWikiTitle(title: string): string {
   return title.replace(/\s*\([^)]*\)\s*$/, "").trim();
 }
 
-export default async function getTerm(): Promise<string> {
+export default async function getTerm(config: Config): Promise<string> {
   const url = new URL("https://he.wikipedia.org/w/api.php");
   url.search = new URLSearchParams({
     action: "query",
@@ -39,11 +39,11 @@ export default async function getTerm(): Promise<string> {
     origin: "*",
   }).toString();
 
-  console.log(`Fetching from ${url.toString()} with user-agent "${userAgent}"`)
+  console.log(`Fetching from ${url.toString()} with user-agent "${config.userAgent}"`)
 
   const response = await fetch(url, {
     headers: {
-      "User-Agent": userAgent,
+      "User-Agent": config.userAgent,
     },
   });
   if (!response.ok) {

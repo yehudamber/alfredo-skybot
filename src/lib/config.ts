@@ -1,12 +1,11 @@
-import { createRequire } from "node:module";
-import { env, version as nodeVersion } from "node:process";
+import packageJson from "../../package.json" with { type: "json" }
+import { versions } from "node:process";
 import { z } from "zod";
 import type { AtpAgentLoginOpts } from "@atproto/api";
 
-const require = createRequire(import.meta.url);
-const packageJson = require("../../package.json") as { version: string };
-
 const envSchema = z.object({
+  DRY_RUN: z.stringbool().default(true),
+
   BSKY_HANDLE: z.string().min(1),
   BSKY_PASSWORD: z.string().min(1),
   BSKY_SERVICE: z.string().min(1).default("https://bsky.social"),
@@ -14,14 +13,24 @@ const envSchema = z.object({
   USER_AGENT_URL: z.string().min(1),
 });
 
-const parsed = envSchema.parse(env);
+export interface Config {
+  dryRun: boolean;
+  bskyAccount: AtpAgentLoginOpts;
+  bskyService: string;
+  userAgent: string;
+}
 
-export const bskyAccount: AtpAgentLoginOpts = {
-  identifier: parsed.BSKY_HANDLE,
-  password: parsed.BSKY_PASSWORD,
-};
+export function getConfig(env: Record<string, unknown>): Config {
+  const parsed = envSchema.parse(env);
 
-export const bskyService = parsed.BSKY_SERVICE;
-
-export const userAgent =
-  `AlfredoSkybot/${packageJson.version} (${parsed.USER_AGENT_URL}) Node/${nodeVersion}`;
+  return {
+    dryRun: parsed.DRY_RUN,
+    bskyAccount: {
+      identifier: parsed.BSKY_HANDLE,
+      password: parsed.BSKY_PASSWORD,
+    },
+    bskyService: parsed.BSKY_SERVICE,
+    userAgent: `AlfredoSkybot/${packageJson.version} (${parsed.USER_AGENT_URL}) `
+      + `Node/${versions.node}`,
+  };
+}
