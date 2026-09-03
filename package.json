@@ -1,6 +1,6 @@
 {
   "name": "alfredo-skybot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Hebrew language 'alfredo bot' for Bluesky",
   "main": "dist/cli.js",
   "type": "module",
