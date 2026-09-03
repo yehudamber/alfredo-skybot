@@ -7,10 +7,12 @@
   "scripts": {
     "test": "node --test dist/test/*",
     "lint": "eslint src/",
+    "types": "wrangler types",
     "build": "tsc",
     "watch": "tsc --watch",
     "start": "node .",
-    "dev": "node --env-file=.env ."
+    "dev": "node --env-file=.env .",
+    "wrangler-dev": "wrangler dev"
   },
   "keywords": [
     "bsky",
