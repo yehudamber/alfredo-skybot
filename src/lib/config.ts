@@ -1,10 +1,7 @@
-import { createRequire } from "node:module";
+import packageJson from "../../package.json" with { type: "json" }
 import { env, version as nodeVersion } from "node:process";
 import { z } from "zod";
 import type { AtpAgentLoginOpts } from "@atproto/api";
-
-const require = createRequire(import.meta.url);
-const packageJson = require("../../package.json") as { version: string };
 
 const envSchema = z.object({
   BSKY_HANDLE: z.string().min(1),
