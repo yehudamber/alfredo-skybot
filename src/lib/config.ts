@@ -1,5 +1,5 @@
 import packageJson from "../../package.json" with { type: "json" }
-import { env, version as nodeVersion } from "node:process";
+import { env, versions } from "node:process";
 import { z } from "zod";
 import type { AtpAgentLoginOpts } from "@atproto/api";
 
@@ -21,4 +21,4 @@ export const bskyAccount: AtpAgentLoginOpts = {
 export const bskyService = parsed.BSKY_SERVICE;
 
 export const userAgent =
-  `AlfredoSkybot/${packageJson.version} (${parsed.USER_AGENT_URL}) Node/${nodeVersion}`;
+  `AlfredoSkybot/${packageJson.version} (${parsed.USER_AGENT_URL}) Node/${versions.node}`;
