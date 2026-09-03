@@ -25,4 +25,11 @@
     "vars": {
         "DRY_RUN": false,
     },
+    "observability": {
+        "logs": {
+            "enabled": true,
+            "invocation_logs": false,
+            "persist": true
+        }
+    }
 }
