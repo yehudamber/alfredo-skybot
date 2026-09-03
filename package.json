@@ -1,16 +1,19 @@
 {
   "name": "alfredo-skybot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Hebrew language 'alfredo bot' for Bluesky",
-  "main": "dist/index.js",
+  "main": "dist/cli.js",
   "type": "module",
   "scripts": {
     "test": "node --test dist/test/*",
     "lint": "eslint src/",
+    "types": "wrangler types",
     "build": "tsc",
+    "check": "tsc --noEmit",
     "watch": "tsc --watch",
     "start": "node .",
-    "dev": "node --env-file=.env ."
+    "dev": "node --env-file=.env .",
+    "wrangler-dev": "wrangler dev"
   },
   "keywords": [
     "bsky",
@@ -29,10 +32,15 @@
     "@types/node": "^22.9.3",
     "eslint": "^10.9.1",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.68.0"
+    "typescript-eslint": "^8.68.0",
+    "wrangler": "^4.128.0"
   },
   "dependencies": {
     "@atproto/api": "^0.13.18",
-    "zod": "^3.23.8"
+    "zod": "^4.5.4"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20260831.1": true
   }
 }

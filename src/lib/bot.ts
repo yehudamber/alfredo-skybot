@@ -1,4 +1,3 @@
-import { bskyAccount, bskyService } from "./config.js";
 import type {
   AppBskyFeedPost,
   AtpAgentLoginOpts,
@@ -11,16 +10,12 @@ export type Post = Partial<AppBskyFeedPost.Record>
 
 interface BotOptions {
   service: string | URL;
+  account: AtpAgentLoginOpts;
   dryRun: boolean;
 }
 
 export default class Bot {
   #agent;
-
-  static defaultOptions: BotOptions = {
-    service: bskyService,
-    dryRun: false,
-  } as const;
 
   constructor(service: AtpAgentOptions["service"]) {
     this.#agent = new AtpAgent({ service });
@@ -50,13 +45,12 @@ export default class Bot {
 
   static async run(
     getPost: () => Promise<Post>,
-    botOptions?: Partial<BotOptions>,
+    botOptions: BotOptions,
   ) {
-    const { service, dryRun } = botOptions
-      ? Object.assign({}, this.defaultOptions, botOptions)
-      : this.defaultOptions;
+    const { service, account, dryRun } = botOptions;
+
     const bot = new Bot(service);
-    await bot.login(bskyAccount);
+    await bot.login(account);
     const post = await getPost();
     if (!dryRun) {
       await bot.post(post);

@@ -14,37 +14,37 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-name: "Build"
+name: Deploy
 
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - deploy
+  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            ref: deploy
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-          cache: npm
+        - name: Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version-file: ".nvmrc"
+            cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+        - name: Install dependencies
+          run: npm ci
 
-      - name: Generate runtime types
-        run: npm run types
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Check
-        run: npm run check
+        - name: Deploy to Cloudflare Workers
+          uses: cloudflare/wrangler-action@v4
+          with:
+            apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+            vars: |
+              USER_AGENT_URL
+          env:
+            USER_AGENT_URL: ${{ github.server_url }}/${{ github.repository }}
