@@ -9,6 +9,7 @@
     "lint": "eslint src/",
     "types": "wrangler types",
     "build": "tsc",
+    "check": "tsc --noEmit",
     "watch": "tsc --watch",
     "start": "node .",
     "dev": "node --env-file=.env .",
