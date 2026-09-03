@@ -26,6 +26,7 @@ jobs:
       - name: Send post
         run: npm start
         env:
+          DRY_RUN: false
           BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
           BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
           USER_AGENT_URL: ${{ github.server_url }}/${{ github.repository }}
