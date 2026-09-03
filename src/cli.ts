@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import main from "./index.js";
+import main from "./main.js";
 import { env } from "node:process";
 
 main(env)
